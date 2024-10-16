@@ -1,5 +1,5 @@
 # E-HealthMate
-Description:
+# Description:
 E-HealthMate is an innovative digital platform designed to enhance healthcare services by integrating technology into medical management. It offers features like remote patient monitoring, telemedicine, digital health records, and personalized health tracking. This app empowers users to manage their health, consult doctors online, and receive timely alerts for medication or appointments. Additionally, healthcare providers can monitor patient data in real time, facilitating early interventions.
 <p></p>
 Uses of E-HealthMate:
