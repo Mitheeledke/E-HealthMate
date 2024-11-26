@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Health Mate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #fff;
+        }
+        .nav-bar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            background-color: white;
+            color: #00aaff;
+            width: 100%;
+
+        }
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-links a {
+            margin-left: 20px;
+            color: black;
+            text-decoration: none;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .user-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #00aaff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-left: 20px;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .left-section {
+            background-color: #00aaff;
+            color: white;
+            padding: 50px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .left-section h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .left-section p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .consult-button {
+            background-color: white;
+            color: #00aaff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 25px;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .consult-button:hover {
+            background-color: #f0f0f0;
+        }
+        .consult-button i {
+            margin-left: 1px;
+        }
+        .right-section {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>     
+    <div class="nav-bar">    
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Contact Us</a>
+            <a href="#">About Us</a>
+            <a href="#">Login</a>
+        </div>
+        
+        <div class="user-icon">&#128100;</div>
+    </div>
+    <div class="container">
+        <div class="left-section">
+            <h1>Welcome<br>E-Health Mate</h1>
+            <p>Connect with our experts for tailored advice and support on your health journey. Your well-being is just a click away!</p>
+            <a href="#" class="consult-button">Consult Here <i>&#10132;</i></a>
+        </div>
+        <div class="right-section"></div>
+    </div>
+</body>
+</html>

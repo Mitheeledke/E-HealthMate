@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Mate Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #00aaff;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #00aaff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logo img {
+            width: 100px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="checkbox"] {
+            margin: 20px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: white;
+            color: #00aaff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0077cc;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            color: white;
+            text-decoration: none;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .navbar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            background-color: white;
+            color: #00aaff;
+            width: 100%;
+        }
+        .navbar a {
+            margin-left: 20px;
+            color: black;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .user-icon {
+            width: 30px;
+            height: 30px;
+            background-color: #00aaff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Contact Us</a>
+        <a href="#">About Us</a>
+        <a href="#">Sign Up</a>
+        <div class="user-icon">&#128100;</div>
+    </div>
+    <div class="container">
+        <div class="logo">
+            <img src="C:\Users\hp\OneDrive\Pictures\Screenshots\Screenshot 2024-11-25 105935.png" alt="Health Mate Logo" width="100px" height="100px">
+        </div>
+        <h2>Login Here</h2>
+        <form>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <div>
+                <input type="checkbox" id="stayLoggedIn">
+                <label for="stayLoggedIn">Stay logged in</label>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="links">
+            <a href="#">I Forgot my Password</a><br>
+            <a href="#">Don't have an account? Sign Up</a>
+        </div>
+    </div>
+</body>
+</html>
