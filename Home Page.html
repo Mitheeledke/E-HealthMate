@@ -24,7 +24,15 @@
             background-color: white;
             color: #00aaff;
             width: 100%;
-
+            align-items: center;
+        }
+        .nav-image {
+            margin-right: auto;
+            padding-left: 3%;
+        }
+        .nav-image img {
+            width: 200px; /* Adjust the width as needed */
+            height: auto;
         }
         .nav-links {
             display: flex;
@@ -34,6 +42,8 @@
             margin-left: 20px;
             color: black;
             text-decoration: none;
+            padding-top: -10px;
+            margin-top: -10px;
         }
         .nav-links a:hover {
             text-decoration: underline;
@@ -90,23 +100,32 @@
             margin-left: 1px;
         }
         .right-section {
-            width: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            width: 50px;
+            margin-top: 60px;
+            margin-bottom: 0px;
+            padding: 0px;
+
         }
+        .right-section img {
+            width: 580px;
+            height: 580px;
+            margin-right: auto;
+        }
+        
     </style>
 </head>
-<body>     
-    <div class="nav-bar">    
+<body>
+    
+    <div class="nav-bar">
+        <div class="nav-image">
+            <img src="M:\project files\E-HealthMatemain\E-HealthMate\Health Mate main.jpg" alt="Health Mate Logo" >
+        </div>
         <div class="nav-links">
             <a href="#">Home</a>
             <a href="#">Contact Us</a>
             <a href="#">About Us</a>
             <a href="#">Login</a>
         </div>
-        
         <div class="user-icon">&#128100;</div>
     </div>
     <div class="container">
@@ -115,7 +134,9 @@
             <p>Connect with our experts for tailored advice and support on your health journey. Your well-being is just a click away!</p>
             <a href="#" class="consult-button">Consult Here <i>&#10132;</i></a>
         </div>
-        <div class="right-section"></div>
+        <div class="right-section">
+            <img src="M:\project files\E-HealthMatemain\E-HealthMate\doctor-offering-medical-teleconsultation.jpg" alt="rightimage" width="100px">
+        </div>
     </div>
 </body>
 </html>
