@@ -5,52 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Health Mate</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            background-color: #fff;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
         .nav-bar {
-            position: absolute;
+            position: fixed;
             top: 0;
+            left: 0;
             right: 0;
             display: flex;
-            justify-content: flex-end;
-            padding: 10px 20px;
+            justify-content: space-between;
+            padding: 15px 40px;
             background-color: white;
-            color: #00aaff;
-            width: 100%;
-            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
         }
+
         .nav-image {
-            margin-right: auto;
-            padding-left: 3%;
+            flex-shrink: 0;
         }
+
         .nav-image img {
-            width: 200px; /* Adjust the width as needed */
+            width: 180px;
             height: auto;
+            object-fit: contain;
         }
+
         .nav-links {
             display: flex;
-            gap: 10px;
+            align-items: center;
+            gap: 30px;
         }
+
         .nav-links a {
-            margin-left: 20px;
-            color: black;
+            color: #333;
             text-decoration: none;
-            padding-top: -10px;
-            margin-top: -10px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
+
         .nav-links a:hover {
-            text-decoration: underline;
+            color: #00aaff;
         }
+
         .user-icon {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             background-color: #00aaff;
             border-radius: 50%;
             display: flex;
@@ -58,85 +69,331 @@
             align-items: center;
             color: white;
             margin-left: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
+
+        .user-icon:hover {
+            background-color: #0088cc;
+        }
+
         .container {
             display: flex;
-            width: 100%;
-            height: 100%;
+            padding-top: 80px;
+            min-height: calc(100vh - 80px);
         }
+
         .left-section {
             background-color: #00aaff;
             color: white;
-            padding: 50px;
+            padding: 60px;
             width: 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
+
         .left-section h1 {
-            font-size: 3em;
-            margin: 0;
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
+
         .left-section p {
             font-size: 1.2em;
-            margin: 20px 0;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
+
         .consult-button {
             background-color: white;
             color: #00aaff;
             border: none;
             padding: 15px 30px;
-            font-size: 1em;
+            font-size: 1.1em;
             cursor: pointer;
             border-radius: 25px;
             display: inline-flex;
             align-items: center;
             text-decoration: none;
+            transition: all 0.3s ease;
+            width: fit-content;
         }
+
         .consult-button:hover {
             background-color: #f0f0f0;
+            transform: translateY(-2px);
         }
-        .consult-button i {
-            margin-left: 1px;
-        }
-        .right-section {
-            width: 50px;
-            margin-top: 60px;
-            margin-bottom: 0px;
-            padding: 0px;
 
+        .consult-button i {
+            margin-left: 10px;
         }
+
+        .right-section {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
         .right-section img {
-            width: 580px;
-            height: 580px;
-            margin-right: auto;
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+                padding: 40px 20px;
+            }
+
+            .nav-bar {
+                padding: 10px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-image img {
+                width: 140px;
+            }
+        }
+        /* footer.css */
+        .footer {
+            background-color: #005580;
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: auto;
+            width: 100%;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding: 0 20px;
+        }
+        
+        .footer-section {
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #00aaff;
+        }
+        
+        .footer-section p {
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-section ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section ul li a:hover {
+            color: #00aaff;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #e0e0e0;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: #00aaff;
+        }
+        
+        .app-downloads {
+            margin-top: 20px;
+        }
+        
+        .store-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .store-buttons img {
+            height: 35px;
+            width: auto;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            color: #e0e0e0;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 968px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+            
+            .footer-section h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .store-buttons {
+                justify-content: center;
+            }
         }
         
     </style>
 </head>
 <body>
-    
     <div class="nav-bar">
         <div class="nav-image">
-            <img src="M:\project files\E-HealthMatemain\E-HealthMate\Health Mate main.jpg" alt="Health Mate Logo" >
+            <img src="Health-Mate-main.jpg" alt="Health Mate Logo">
         </div>
         <div class="nav-links">
             <a href="#">Home</a>
             <a href="#">Contact Us</a>
             <a href="#">About Us</a>
             <a href="#">Login</a>
+            <div class="user-icon">&#128100;</div>
         </div>
-        <div class="user-icon">&#128100;</div>
     </div>
+
     <div class="container">
         <div class="left-section">
-            <h1>Welcome<br>E-Health Mate</h1>
+            <h1>Welcome to<br>E-Health Mate</h1>
             <p>Connect with our experts for tailored advice and support on your health journey. Your well-being is just a click away!</p>
             <a href="#" class="consult-button">Consult Here <i>&#10132;</i></a>
         </div>
         <div class="right-section">
-            <img src="M:\project files\E-HealthMatemain\E-HealthMate\doctor-offering-medical-teleconsultation.jpg" alt="rightimage" width="100px">
+            <img src="doctor-teleconsultation.jpg" alt="Doctor offering medical teleconsultation">
         </div>
     </div>
+    <!-- footer.html -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About E-Health Mate</h3>
+                <p>E-Health Mate is your trusted healthcare companion, providing 24/7 access to medical professionals, online consultations, and personalized health advice. We connect you with qualified healthcare providers for reliable medical solutions.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Find a Doctor</a></li>
+                    <li><a href="#">Book Appointment</a></li>
+                    <li><a href="#">Health Blog</a></li>
+                    <li><a href="#">Emergency Services</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i> +1 (234) 567-8900</li>
+                    <li><i class="fas fa-envelope"></i> support@ehealthmate.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Healthcare Avenue, Medical District</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="app-downloads">
+                    <p>Download Our App</p>
+                    <div class="store-buttons">
+                        <a href="#"><img src="app-store.png" alt="App Store"></a>
+                        <a href="#"><img src="play-store.png" alt="Play Store"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 E-Health Mate. All rights reserved.</p>
+            <p>Terms of Service | Privacy Policy | Cookie Policy</p>
+        </div>
+    </footer>
+    
 </body>
 </html>
