@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - E-Health Mate</title>
+    <title>Consultation Request - E-Health Mate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,33 +14,34 @@
 
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             min-height: 100vh;
-            background-color: #00aaff;
-            overflow-x: hidden;
+            background-color: #f5f7fa;
         }
 
-        .navbar {
+        /* Navbar Styles */
+        .nav-bar {
             position: fixed;
             top: 0;
-            left: 0;
             right: 0;
             display: flex;
             justify-content: space-between;
-            align-items: center;
             padding: 15px 40px;
             background-color: white;
+            width: 100%;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             z-index: 1000;
         }
 
-        .logo {
-            flex-shrink: 0;
+        .nav-image {
+            margin-right: auto;
+            padding-left: 3%;
         }
 
-        .logo img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
+        .nav-image img {
+            width: 200px;
+            height: auto;
         }
 
         .nav-links {
@@ -71,134 +73,100 @@
             color: white;
             margin-left: 20px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
+        /* Main Content Styles */
         .main-container {
+            margin-top: 100px;
+            padding: 40px;
+        }
+
+        .page-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 100px 50px;
-            min-height: 100vh;
-            gap: 50px;
-        }
-
-        .image-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .image-container img {
-            max-width: 50%;
-            height: auto;
-            border-radius: 15px;
-            
-        }
-
-        .form-container {
-            flex: 1;
-            max-width: 500px;
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            left: -50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .form-container h2 {
-            color: #00aaff;
             margin-bottom: 30px;
-            font-size: 28px;
-            text-align: center;
+        }
+
+        .page-header h2 {
+            color: #2c3e50;
+            font-size: 24px;
+        }
+
+        /* Form Styles */
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
         }
 
         .form-group {
             margin-bottom: 20px;
         }
 
-        .form-container input {
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             font-size: 16px;
-            transition: border-color 0.3s ease;
         }
 
-        .form-container input:focus {
-            outline: none;
-            border-color: #00aaff;
+        .form-group textarea {
+            resize: vertical;
         }
 
-        .form-container button {
-            width: 100%;
-            padding: 12px;
+        .submit-btn {
+            padding: 12px 25px;
             background-color: #00aaff;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
+            font-weight: 500;
             cursor: pointer;
+            transition: all 0.3s ease;
             font-size: 16px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-            margin-top: 10px;
         }
 
-        .form-container button:hover {
+        .submit-btn:hover {
             background-color: #0088cc;
         }
 
-        .form-container p {
-            margin-top: 20px;
-            text-align: center;
-            color: #666;
-        }
-
-        .form-container a {
-            color: #00aaff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .form-container a:hover {
-            text-decoration: underline;
-        }
-
         @media (max-width: 968px) {
-            .main-container {
-                flex-direction: column;
-                padding: 80px 20px;
-            }
-
-            .form-container {
-                width: 100%;
-                max-width: 100%;
-            }
-
-            .image-container {
-                order: -1;
-            }
-
-            .image-container img {
-                max-width: 80%;
-            }
-
-            .navbar {
+            .nav-bar {
                 padding: 10px 20px;
+            }
+
+            .nav-image img {
+                width: 150px;
             }
 
             .nav-links {
                 gap: 15px;
             }
 
-            .logo img {
-                height: 30px;
+            .main-container {
+                padding: 20px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .form-group input, .form-group textarea {
+                padding: 8px;
             }
         }
-        /* footer.css */
+
+        /* Footer Styles */
         .footer {
             background-color: #005580;
             color: white;
@@ -348,12 +316,12 @@
                 justify-content: center;
             }
         }
-        
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
+    <!-- Navbar -->
+    <div class="nav-bar">
+        <div class="nav-image">
             <img src="https://i.ibb.co/MDjvdK5/Navbar-logo.png" alt="Navbar-logo">
         </div>
         <div class="nav-links">
@@ -363,42 +331,55 @@
             <a href="#">Login</a>
             <div class="user-icon">&#128100;</div>
         </div>
-    </nav>
+    </div>
 
     <div class="main-container">
-        <div class="image-container">
-            <img src="https://i.ibb.co/tJXxxSf/Login-image-2.png    " alt="Healthcare Illustration">
+        <div class="page-header">
+            <h2>Consultation Request</h2>
         </div>
+
         <div class="form-container">
-            <h2>Create an Account</h2>
-            <form action="db_connect.php" method="Post">
+            <form id="consultationForm">
                 <div class="form-group">
-                    <input type="text" placeholder="Username" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="password" placeholder="Password" required>
-                    <input type="password" placeholder="Confirm Password" required>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
-                <button type="submit">Sign Up</button>
-                <p>Already have an account? <a href="C:\Users\Admin\OneDrive\E-HealthMate\Login.html">Log in</a></p>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason for Consultation</label>
+                    <textarea id="reason" name="reason" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request</button>
             </form>
         </div>
     </div>
-    <!-- footer.html -->
+
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>About E-Health Mate</h3>
-                <p>E-Health Mate is your trusted healthcare companion, providing 24/7 access to medical professionals, online consultations, and personalized health advice. We connect you with qualified healthcare providers for reliable medical solutions.</p>
+                <p>E-Health Mate is your trusted healthcare companion, providing 24/7 access to medical professionals, online consultations, and personalized health advice. Our platform connects patients with qualified doctors for reliable healthcare solutions.</p>
             </div>
             
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
                     <li><a href="#">Find a Doctor</a></li>
                     <li><a href="#">Book Appointment</a></li>
                     <li><a href="#">Health Blog</a></li>
                     <li><a href="#">Emergency Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
                 </ul>
             </div>
             
@@ -407,7 +388,7 @@
                 <ul class="contact-info">
                     <li><i class="fas fa-phone"></i> +1 (234) 567-8900</li>
                     <li><i class="fas fa-envelope"></i> support@ehealthmate.com</li>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Healthcare Avenue, Medical District</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Healthcare Avenue, Medical District, NY 10001</li>
                 </ul>
             </div>
             
@@ -434,6 +415,29 @@
             <p>Terms of Service | Privacy Policy | Cookie Policy</p>
         </div>
     </footer>
-    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('consultationForm');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Collect form data
+                const formData = new FormData(form);
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+
+                // Here you would send the data to your server
+                console.log('Consultation Request:', data);
+
+                // Optionally, redirect to a confirmation page or show a success message
+                alert('Consultation request submitted successfully!');
+                form.reset();
+            });
+        });
+    </script>
 </body>
 </html>

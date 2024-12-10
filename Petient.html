@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - E-Health Mate</title>
+    <title>Video Consultation - E-Health Mate</title>
     <style>
+        /* Existing styles remain the same */
         * {
             margin: 0;
             padding: 0;
@@ -14,7 +15,7 @@
         body {
             font-family: Arial, sans-serif;
             min-height: 100vh;
-            background-color: #00aaff;
+            background-color: #f4f4f9;
             overflow-x: hidden;
         }
 
@@ -77,128 +78,107 @@
         .main-container {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             padding: 100px 50px;
-            min-height: 100vh;
             gap: 50px;
+            flex-wrap: wrap;
         }
 
-        .image-container {
+        .video-container {
             flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .image-container img {
-            max-width: 50%;
-            height: auto;
-            border-radius: 15px;
-            
-        }
-
-        .form-container {
-            flex: 1;
-            max-width: 500px;
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            left: -50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .form-container h2 {
-            color: #00aaff;
-            margin-bottom: 30px;
-            font-size: 28px;
-            text-align: center;
-        }
-
-        .form-group {
+            max-width: 600px;
             margin-bottom: 20px;
         }
 
-        .form-container input {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
+        .video-box {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
-        .form-container input:focus {
-            outline: none;
-            border-color: #00aaff;
+        .video-box video {
+            width: 49%;
+            height: 300px;
+            border-radius: 10px;
+            background-color: #000;
         }
 
-        .form-container button {
-            width: 100%;
-            padding: 12px;
+        .chat-container {
+            flex: 1;
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .chat-box p {
+            margin: 5px 0;
+        }
+
+        .chat-box .message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .chat-box .message.user {
+            background-color: #00aaff;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chat-box .message.doctor {
+            background-color: #e0e0e0;
+            color: #333;
+            align-self: flex-start;
+        }
+
+        .chat-container input {
+            width: calc(100% - 110px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .chat-container button {
+            padding: 10px 20px;
             background-color: #00aaff;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
             transition: background-color 0.3s ease;
-            margin-top: 10px;
         }
 
-        .form-container button:hover {
+        .chat-container button:hover {
             background-color: #0088cc;
         }
 
-        .form-container p {
-            margin-top: 20px;
-            text-align: center;
-            color: #666;
+        button {
+            padding: 10px 20px;
+            background-color: #00aaff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .form-container a {
-            color: #00aaff;
-            text-decoration: none;
-            font-weight: bold;
+        button:hover {
+            background-color: #0088cc;
         }
 
-        .form-container a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 968px) {
-            .main-container {
-                flex-direction: column;
-                padding: 80px 20px;
-            }
-
-            .form-container {
-                width: 100%;
-                max-width: 100%;
-            }
-
-            .image-container {
-                order: -1;
-            }
-
-            .image-container img {
-                max-width: 80%;
-            }
-
-            .navbar {
-                padding: 10px 20px;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .logo img {
-                height: 30px;
-            }
-        }
-        /* footer.css */
         .footer {
             background-color: #005580;
             color: white;
@@ -206,7 +186,7 @@
             margin-top: auto;
             width: 100%;
         }
-        
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -215,11 +195,11 @@
             gap: 40px;
             padding: 0 20px;
         }
-        
+
         .footer-section {
             margin-bottom: 30px;
         }
-        
+
         .footer-section h3 {
             color: #ffffff;
             font-size: 20px;
@@ -227,7 +207,7 @@
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         .footer-section h3::after {
             content: '';
             position: absolute;
@@ -237,44 +217,44 @@
             height: 2px;
             background-color: #00aaff;
         }
-        
+
         .footer-section p {
             line-height: 1.6;
             color: #e0e0e0;
         }
-        
+
         .footer-section ul {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-section ul li {
             margin-bottom: 12px;
         }
-        
+
         .footer-section ul li a {
             color: #e0e0e0;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .footer-section ul li a:hover {
             color: #00aaff;
         }
-        
+
         .contact-info li {
             display: flex;
             align-items: center;
             gap: 10px;
             color: #e0e0e0;
         }
-        
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-bottom: 20px;
         }
-        
+
         .social-links a {
             color: white;
             background-color: rgba(255, 255, 255, 0.1);
@@ -286,46 +266,46 @@
             justify-content: center;
             transition: background-color 0.3s ease;
         }
-        
+
         .social-links a:hover {
             background-color: #00aaff;
         }
-        
+
         .app-downloads {
             margin-top: 20px;
         }
-        
+
         .store-buttons {
             display: flex;
             gap: 10px;
             margin-top: 10px;
         }
-        
+
         .store-buttons img {
             height: 35px;
             width: auto;
         }
-        
+
         .footer-bottom {
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .footer-bottom p {
             color: #e0e0e0;
             font-size: 14px;
             margin: 5px 0;
         }
-        
+
         @media (max-width: 968px) {
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
         }
-        
+
         @media (max-width: 576px) {
             .footer-content {
                 grid-template-columns: 1fr;
@@ -348,7 +328,6 @@
                 justify-content: center;
             }
         }
-        
     </style>
 </head>
 <body>
@@ -360,30 +339,29 @@
             <a href="#">Home</a>
             <a href="#">Contact Us</a>
             <a href="#">About Us</a>
-            <a href="#">Login</a>
+            <a href="#">Profile</a>
             <div class="user-icon">&#128100;</div>
         </div>
     </nav>
 
     <div class="main-container">
-        <div class="image-container">
-            <img src="https://i.ibb.co/tJXxxSf/Login-image-2.png    " alt="Healthcare Illustration">
+        <div class="video-container">
+            <div class="video-box">
+                <video id="localVideo" autoplay playsinline></video>
+                <video id="remoteVideo" autoplay playsinline></video>
+            </div>
+            <button id="startCall">Start Consultation</button>
+            <button id="endCall">End Consultation</button>
         </div>
-        <div class="form-container">
-            <h2>Create an Account</h2>
-            <form action="db_connect.php" method="Post">
-                <div class="form-group">
-                    <input type="text" placeholder="Username" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="password" placeholder="Password" required>
-                    <input type="password" placeholder="Confirm Password" required>
-                </div>
-                <button type="submit">Sign Up</button>
-                <p>Already have an account? <a href="C:\Users\Admin\OneDrive\E-HealthMate\Login.html">Log in</a></p>
-            </form>
+        <div class="chat-container">
+            <div class="chat-box" id="chatBox">
+                <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="sendButton">Send</button>
         </div>
     </div>
-    <!-- footer.html -->
+
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -407,7 +385,7 @@
                 <ul class="contact-info">
                     <li><i class="fas fa-phone"></i> +1 (234) 567-8900</li>
                     <li><i class="fas fa-envelope"></i> support@ehealthmate.com</li>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Healthcare Avenue, Medical District</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Main St, Anytown, USA</li>
                 </ul>
             </div>
             
@@ -434,6 +412,78 @@
             <p>Terms of Service | Privacy Policy | Cookie Policy</p>
         </div>
     </footer>
-    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const localVideo = document.getElementById('localVideo');
+            const remoteVideo = document.getElementById('remoteVideo');
+            const startCallButton = document.getElementById('startCall');
+            const endCallButton = document.getElementById('endCall');
+            const chatInput = document.getElementById('chatInput');
+            const chatBox = document.getElementById('chatBox');
+            const sendButton = document.getElementById('sendButton');
+
+            let localStream;
+            let peerConnection;
+
+            const constraints = {
+                video: true,
+                audio: true
+            };
+
+            startCallButton.addEventListener('click', async () => {
+                try {
+                    localStream = await navigator.mediaDevices.getUserMedia(constraints);
+                    localVideo.srcObject = localStream;
+
+                    // Initialize WebRTC peer connection here
+                    // This is a simplified example; you need to handle signaling and ICE candidates
+                    peerConnection = new RTCPeerConnection();
+
+                    localStream.getTracks().forEach(track => {
+                        peerConnection.addTrack(track, localStream);
+                    });
+
+                    peerConnection.ontrack = event => {
+                        remoteVideo.srcObject = event.streams[0];
+                    };
+
+                    // Create offer and set local description
+                    const offer = await peerConnection.createOffer();
+                    await peerConnection.setLocalDescription(offer);
+
+                    // Here you would send the offer to the remote peer via signaling server
+                    console.log('Offer:', offer);
+                } catch (error) {
+                    console.error('Error accessing media devices.', error);
+                }
+            });
+
+            endCallButton.addEventListener('click', () => {
+                if (localStream) {
+                    localStream.getTracks().forEach(track => track.stop());
+                    localVideo.srcObject = null;
+                }
+                if (peerConnection) {
+                    peerConnection.close();
+                }
+            });
+
+            sendButton.addEventListener('click', () => {
+                const message = chatInput.value.trim();
+                if (message) {
+                    const messageElement = document.createElement('p');
+                    messageElement.classList.add('message', 'user');
+                    messageElement.textContent = message;
+                    chatBox.appendChild(messageElement);
+                    chatInput.value = '';
+                    chatBox.scrollTop = chatBox.scrollHeight;
+
+                    // Here you would send the message to the remote peer via signaling server
+                    console.log('Message sent:', message);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

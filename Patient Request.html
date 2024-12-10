@@ -343,7 +343,7 @@
     <!-- Navbar from Home Page -->
     <div class="nav-bar">
         <div class="nav-image">
-            <img src="Health-Mate-main.jpg" alt="Health Mate Logo">
+            <img src="https://i.ibb.co/MDjvdK5/Navbar-logo.png" alt="Navbar-logo">
         </div>
         <div class="nav-links">
             <a href="#">Home</a>
@@ -368,6 +368,7 @@
                         <th>Mobile No</th>
                         <th>Email</th>
                         <th>Address</th>
+                        <th>Actions</th> <!-- New column for actions -->
                     </tr>
                 </thead>
                 <tbody>
@@ -377,28 +378,35 @@
                         <td>9076613214</td>
                         <td>voramish7018@gmail.com</td>
                         <td>Hyd</td>
+                        <td>
+                            <button class="action-btn accept-btn" data-id="201">Accept</button>
+                            <button class="action-btn cancel-btn" data-id="201">Cancel</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>201</td>
-                        <td>T. ESHWAR</td>
-                        <td>9076613214</td>
-                        <td>voramish7018@gmail.com</td>
-                        <td>Hyd</td>
+                        <td>202</td>
+                        <td>John Doe</td>
+                        <td>9876543210</td>
+                        <td>johndoe@example.com</td>
+                        <td>New York</td>
+                        <td>
+                            <button class="action-btn accept-btn" data-id="202">Accept</button>
+                            <button class="action-btn cancel-btn" data-id="202">Cancel</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>201</td>
-                        <td>T. ESHWAR</td>
-                        <td>9076613214</td>
-                        <td>voramish7018@gmail.com</td>
-                        <td>Hyd</td>
+                        <td>203</td>
+                        <td>Jane Smith</td>
+                        <td>9876543211</td>
+                        <td>janesmith@example.com</td>
+                        <td>Los Angeles</td>
+                        <td>
+                            <button class="action-btn accept-btn" data-id="203">Accept</button>
+                            <button class="action-btn cancel-btn" data-id="203">Cancel</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-
-        <div class="button-container">
-            <button class="action-btn accept-btn">Accept</button>
-            <button class="action-btn cancel-btn">Cancel</button>
         </div>
     </div>
     <footer class="footer">
@@ -451,6 +459,31 @@
             <p>Terms of Service | Privacy Policy | Cookie Policy</p>
         </div>
     </footer>
-       
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add event listeners to all accept buttons
+        document.querySelectorAll('.accept-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const patientId = this.getAttribute('data-id');
+                // Navigate to Doctor Call.html with the patient ID as a query parameter
+                window.location.href = `Doctor Call.html?id=${patientId}`;
+            });
+        });
+
+        // Add event listeners to all cancel buttons
+        document.querySelectorAll('.cancel-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const patientId = this.getAttribute('data-id');
+                // Optionally, navigate to Doctor Call.html or another page with the patient ID
+                if (confirm(`Are you sure you want to cancel the request for patient ID: ${patientId}?`)) {
+                    // For demonstration, we'll navigate to Doctor Call.html, but you can change this
+                    window.location.href = `Doctor Call.html?id=${patientId}`;
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
