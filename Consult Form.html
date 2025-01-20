@@ -325,10 +325,9 @@
             <img src="https://i.ibb.co/MDjvdK5/Navbar-logo.png" alt="Navbar-logo">
         </div>
         <div class="nav-links">
-            <a href="#">Home</a>
+            <a href="Home Page.html">Home</a>
             <a href="#">Contact Us</a>
             <a href="#">About Us</a>
-            <a href="#">Login</a>
             <div class="user-icon">&#128100;</div>
         </div>
     </div>
@@ -339,7 +338,7 @@
         </div>
 
         <div class="form-container">
-            <form id="consultationForm">
+            <form id="consultationForm" action="backend/submit_form.php" method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -361,7 +360,7 @@
                     <textarea id="reason" name="reason" rows="4" required></textarea>
                 </div>
                 <button type="submit" class="submit-btn">Submit Request</button>
-            </form>
+            </form>            
         </div>
     </div>
 
@@ -415,29 +414,5 @@
             <p>Terms of Service | Privacy Policy | Cookie Policy</p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('consultationForm');
-
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-
-                // Collect form data
-                const formData = new FormData(form);
-                const data = {};
-                formData.forEach((value, key) => {
-                    data[key] = value;
-                });
-
-                // Here you would send the data to your server
-                console.log('Consultation Request:', data);
-
-                // Optionally, redirect to a confirmation page or show a success message
-                alert('Consultation request submitted successfully!');
-                form.reset();
-            });
-        });
-    </script>
 </body>
 </html>

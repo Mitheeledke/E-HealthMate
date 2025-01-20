@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Requests - E-Health Mate</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .main-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .page-header h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .table-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background-color: #0067cc;
+        }
+
+        .view-application {
+            background-color: #4CAF50;
+        }
+
+        .view-application:hover {
+            background-color: #3e8e41;
+        }
+
+        .cancel-btn {
+            background-color: #dc3545;
+        }
+
+        .cancel-btn:hover {
+            background-color: #c8233c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="page-header">
+            <h2>Patient Requests</h2>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Mobile No</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th class="actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="patient-requests">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch patient requests from the server
+        function fetchPatientRequests() {
+            fetch('/api/patient-requests') // Replace with your API endpoint
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('patient-requests');
+                    tbody.innerHTML = ''; // Clear existing content
+
+                    // Loop through the data and create table rows
+                    for (const request of data) {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${request.id}</td>
+                            <td>${request.name}</td>
+                            <td>${request.mobile_no}</td>
+                            <td>${request.email}</td>
+                            <td>${request.address}</td>
+                            <td class="actions">
+                                <button class="action-btn view-application" data-id="${request.id}">View Application</button>
+                                <button class="action-btn accept-btn" data-id="${request.id}">Accept</button>
+                                <button class="action-btn cancel-btn" data-id="${request.id}">Cancel</button>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching patient requests:', error);
+                    // Handle errors appropriately 
+                    tbody.innerHTML = '<tr><td colspan="6">Error fetching patient requests.</td></tr>'; 
+                });
+        }
+
+        // Call the function to fetch data on page load
+        fetchPatientRequests();
+
+        // Add event listeners for "Accept" and "Cancel" buttons (if needed)
+        // ... (Your code for handling button clicks and sending AJAX requests) ...
+
+    </script>
+
+</body>
+</html>

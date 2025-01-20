@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Mate Login</title>
+    <title>Login - Health Mate</title>
     <style>
         * {
             margin: 0;
@@ -28,7 +29,7 @@
             align-items: center;
             padding: 15px 40px;
             background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
 
@@ -75,23 +76,55 @@
 
         .main-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 100px 50px;
             min-height: 100vh;
             gap: 50px;
         }
 
-        .login-container {
-            flex: 1;
-            max-width: 400px;
+        .login-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 300px;
+        }
+
+        .login-button {
+            background-color: white;
+            color: #00aaff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-button img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .login-form {
             background-color: white;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
         }
 
-        .login-container h2 {
+        .login-form h2 {
             color: #00aaff;
             margin-bottom: 30px;
             font-size: 28px;
@@ -142,42 +175,28 @@
             font-size: 16px;
             font-weight: bold;
             transition: background-color 0.3s ease;
+            margin-top: 20px;
         }
 
         .login-btn:hover {
             background-color: #0088cc;
         }
 
-        .links {
-            margin-top: 20px;
+        .forgot-password {
             text-align: center;
+            margin-top: 20px;
         }
 
-        .links a {
-            display: block;
+        .forgot-password a {
             color: #00aaff;
             text-decoration: none;
-            margin: 10px 0;
             font-size: 14px;
             transition: color 0.3s ease;
         }
 
-        .links a:hover {
+        .forgot-password a:hover {
             color: #0088cc;
             text-decoration: underline;
-        }
-
-        .image-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .image-container img {
-            max-width: 35%;
-            height: auto;
-            border-radius: 15px;
         }
 
         @media (max-width: 968px) {
@@ -186,17 +205,12 @@
                 padding: 80px 20px;
             }
 
-            .login-container {
+            .login-form {
                 width: 100%;
-                max-width: 100%;
             }
 
-            .image-container {
-                order: -1;
-            }
-
-            .image-container img {
-                max-width: 80%;
+            .login-options {
+                width: 100%;
             }
 
             .navbar {
@@ -206,9 +220,8 @@
             .nav-links {
                 gap: 15px;
             }
-            
         }
-        /* footer.css */
+
         .footer {
             background-color: #005580;
             color: white;
@@ -216,7 +229,7 @@
             margin-top: auto;
             width: 100%;
         }
-        
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -225,11 +238,11 @@
             gap: 40px;
             padding: 0 20px;
         }
-        
+
         .footer-section {
             margin-bottom: 30px;
         }
-        
+
         .footer-section h3 {
             color: #ffffff;
             font-size: 20px;
@@ -237,7 +250,7 @@
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         .footer-section h3::after {
             content: '';
             position: absolute;
@@ -247,44 +260,44 @@
             height: 2px;
             background-color: #00aaff;
         }
-        
+
         .footer-section p {
             line-height: 1.6;
             color: #e0e0e0;
         }
-        
+
         .footer-section ul {
             list-style: none;
             padding: 0;
         }
-        
+
         .footer-section ul li {
             margin-bottom: 12px;
         }
-        
+
         .footer-section ul li a {
             color: #e0e0e0;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .footer-section ul li a:hover {
             color: #00aaff;
         }
-        
+
         .contact-info li {
             display: flex;
             align-items: center;
             gap: 10px;
             color: #e0e0e0;
         }
-        
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-bottom: 20px;
         }
-        
+
         .social-links a {
             color: white;
             background-color: rgba(255, 255, 255, 0.1);
@@ -296,64 +309,65 @@
             justify-content: center;
             transition: background-color 0.3s ease;
         }
-        
+
         .social-links a:hover {
             background-color: #00aaff;
         }
-        
+
         .app-downloads {
             margin-top: 20px;
         }
-        
+
         .store-buttons {
             display: flex;
             gap: 10px;
             margin-top: 10px;
         }
-        
+
         .store-buttons img {
             height: 35px;
             width: auto;
         }
-        
+
         .footer-bottom {
             text-align: center;
             margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .footer-bottom p {
             color: #e0e0e0;
             font-size: 14px;
             margin: 5px 0;
         }
-        
+
+        /* Responsive Footer */
         @media (max-width: 968px) {
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
         }
-        
+
         @media (max-width: 576px) {
             .footer-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .footer-section {
                 text-align: center;
             }
-            
+
             .footer-section h3::after {
                 left: 50%;
                 transform: translateX(-50%);
             }
-            
+
             .social-links {
                 justify-content: center;
             }
-            
+
             .store-buttons {
                 justify-content: center;
             }
@@ -366,91 +380,62 @@
             <img src="https://i.ibb.co/MDjvdK5/Navbar-logo.png" alt="Navbar-logo">
         </div>
         <div class="nav-links">
-            <a href="#">Home</a>
+            <a href="Home Page.html">Home</a>
             <a href="#">Contact Us</a>
             <a href="#">About Us</a>
-            <a href="#">Sign Up</a>
+            <a href="Login.html">Login</a>
             <div class="user-icon">&#128100;</div>
         </div>
     </nav>
 
     <div class="main-container">
-        <div class="login-container">
-            <h2>Welcome Back</h2>
-            <form>
-                <div class="form-group">
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="password" placeholder="Password" required>
-                </div>
-                
-                <div class="remember-me">
-                    <input type="checkbox" id="stayLoggedIn">
-                    <label for="stayLoggedIn">Stay logged in</label>
-                </div>
-                
-                <button type="submit" class="login-btn">Login</button>
-                
-                <div class="links">
-                    <a href="#">Forgot Password?</a>
-                    <a href="#">Don't have an account? Sign Up</a>
-                </div>
-            </form>
+        <div class="login-options">
+            <button class="login-button" onclick="showLoginForm('doctor')">
+                <img src="doctor-icon.png" alt="Doctor Icon">
+                Doctor Login
+            </button>
+            <button class="login-button" onclick="showLoginForm('patient')">
+                <img src="patient-icon.png" alt="patient Icon">
+                Patient Login
+            </button>
+            <button class="login-button" onclick="showLoginForm('admin')">
+                <img src="admin-icon.png" alt="admin Icon">
+                Admin Login
+            </button>
         </div>
 
-        <div class="image-container">
-            <img src="https://i.ibb.co/gRvF0NF/Login-image-1.png" alt="Healthcare Illustration">
-        </div>
-    </div>
+        <div class="login-form" id="loginFormContainer">
+    <h2 id="loginFormTitle">Login</h2>
+    <form id="loginForm" action="backend/authenticate.php" method="POST">
+        <input type="hidden" id="userRole" name="role" value="doctor">
 
-<!-- footer.html -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>About E-Health Mate</h3>
-            <p>E-Health Mate is your trusted healthcare companion, providing 24/7 access to medical professionals, online consultations, and personalized health advice. We connect you with qualified healthcare providers for reliable medical solutions.</p>
+        <div class="form-group">
+            <input type="text" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
         </div>
-        
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Find a Doctor</a></li>
-                <li><a href="#">Book Appointment</a></li>
-                <li><a href="#">Health Blog</a></li>
-                <li><a href="#">Emergency Services</a></li>
-            </ul>
+
+        <div class="remember-me">
+            <input type="checkbox" id="stayLoggedIn">
+            <label for="stayLoggedIn">Stay logged in</label>
         </div>
-        
-        <div class="footer-section">
-            <h3>Contact Us</h3>
-            <ul class="contact-info">
-                <li><i class="fas fa-phone"></i> +1 (234) 567-8900</li>
-                <li><i class="fas fa-envelope"></i> support@ehealthmate.com</li>
-                <li><i class="fas fa-map-marker-alt"></i> 123 Healthcare Avenue, Medical District</li>
-            </ul>
+
+        <button type="submit" class="login-btn">Login</button>
+
+        <div class="forgot-password">
+            <a href="#">Forgot Password?</a>
+            <a href="Create a Account.html">Don't have an account? Sign Up</a>
         </div>
-        
-        <div class="footer-section">
-            <h3>Connect With Us</h3>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-            <div class="app-downloads">
-                <p>Download Our App</p>
-                <div class="store-buttons">
-                    <a href="#"><img src="app-store.png" alt="App Store"></a>
-                    <a href="#"><img src="play-store.png" alt="Play Store"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy; 2024 E-Health Mate. All rights reserved.</p>
-        <p>Terms of Service | Privacy Policy | Cookie Policy</p>
-    </div>
-</body>
-</html>
+    </form>
+</div>
+
+<script>
+    // Set user role based on the clicked button
+    function showLoginForm(role) {
+        const formTitle = document.getElementById('loginFormTitle');
+        const userRoleInput = document.getElementById('userRole');
+
+        // Update form title and role value
+        formTitle.textContent = `${role} Login`;
+        userRoleInput.value = role;
+    }
+</script>

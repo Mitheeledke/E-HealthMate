@@ -357,10 +357,10 @@
             <img src="https://i.ibb.co/MDjvdK5/Navbar-logo.png" alt="Navbar-logo">
         </div>
         <div class="nav-links">
-            <a href="#">Home</a>
+            <a href="Home Page.html">Home</a>
             <a href="#">Contact Us</a>
             <a href="#">About Us</a>
-            <a href="#">Login</a>
+            <a href="Login.html">Login</a>
             <div class="user-icon">&#128100;</div>
         </div>
     </nav>
@@ -371,17 +371,26 @@
         </div>
         <div class="form-container">
             <h2>Create an Account</h2>
-            <form action="db_connect.php" method="Post">
+            <form action="backend/db_connect.php" method="POST">
                 <div class="form-group">
-                    <input type="text" placeholder="Username" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="password" placeholder="Password" required>
-                    <input type="password" placeholder="Confirm Password" required>
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                    
+                    <!-- Role selection dropdown -->
+                    <select name="role" id="role" required style="width:100%; padding:10px; border:2px solid #e0e0e0; border-radius:8px; margin-bottom:15px; font-size:16px;">
+                        <option value="" disabled selected>Select your role</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="patient">Patient</option>
+                        <option value="admin">Admin</option>
+                    </select>
                 </div>
                 <button type="submit">Sign Up</button>
-                <p>Already have an account? <a href="C:\Users\Admin\OneDrive\E-HealthMate\Login.html">Log in</a></p>
+                <p>Already have an account? <a href="Login.html">Log in</a></p>
             </form>
         </div>
+        
     </div>
     <!-- footer.html -->
     <footer class="footer">
@@ -394,8 +403,8 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Find a Doctor</a></li>
+                    <li><a href="Home Page.html">Home</a></li>
+                    <li><a href="Doctor Login.html">Find a Doctor</a></li>
                     <li><a href="#">Book Appointment</a></li>
                     <li><a href="#">Health Blog</a></li>
                     <li><a href="#">Emergency Services</a></li>
