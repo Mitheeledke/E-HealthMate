@@ -107,7 +107,7 @@
         }
 
         th, td {
-            padding: 15px 20px;
+            padding: 10px 15px;
             text-align: left;
             border-bottom: 1px solid #eee;
         }
@@ -359,55 +359,46 @@
         </div>
 
         <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Mobile No</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Actions</th> <!-- New column for actions -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>201</td>
-                        <td>T. ESHWAR</td>
-                        <td>9076613214</td>
-                        <td>voramish7018@gmail.com</td>
-                        <td>Hyd</td>
+        <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Mobile No</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Reason</th>
+            <th>Actions</th> <!-- New column for actions -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        // Include the fetch_patient_request.php file to get the user data
+        $users = include 'backend/fetch_patient_request.php';
+
+        if (!empty($users)) {
+            foreach ($users as $user) {
+                echo "<tr>
+                        <td>{$user['id']}</td>
+                        <td>{$user['name']}</td>
+                        <td>{$user['phone']}</td>
+                        <td>{$user['email']}</td>
+                        <td>{$user['address']}</td>
+                        <td>{$user['reason']}</td>
                         <td>
-                            <button class="action-btn view-application" data-id="202">View Application</button>
-                            <button class="action-btn accept-btn" data-id="201">Accept</button>
-                            <button class="action-btn cancel-btn" data-id="201">Cancel</button>
+                            <button class='action-btn accept-btn' data-id='{$user['id']}'>Accept</button>
+                            <button class='action-btn cancel-btn' data-id='{$user['id']}'>Cancel</button>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>202</td>
-                        <td>John Doe</td>
-                        <td>9876543210</td>
-                        <td>johndoe@example.com</td>
-                        <td>New York</td>
-                        <td>
-                            <button class="action-btn view-application" data-id="202">View Application</button>
-                            <button class="action-btn accept-btn" data-id="202">Accept</button>
-                            <button class="action-btn cancel-btn" data-id="202">Cancel</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>203</td>
-                        <td>Jane Smith</td>
-                        <td>9876543211</td>
-                        <td>janesmith@example.com</td>
-                        <td>Los Angeles</td>
-                        <td>
-                            <button class="action-btn view-application" data-id="202">View Application</button>
-                            <button class="action-btn accept-btn" data-id="203">Accept</button>
-                            <button class="action-btn cancel-btn" data-id="203">Cancel</button>
-                        </td>
-                    </tr>
-                </tbody>
+                      </tr>";
+            }
+        } else {
+            echo "<tr><td colspan='7'>No records found</td></tr>";
+        }
+        ?>
+    </tbody>
+</table>
+
+                
             </table>
         </div>
     </div>
@@ -475,12 +466,33 @@
 
         // Add event listeners to all cancel buttons
         document.querySelectorAll('.cancel-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const patientId = this.getAttribute('data-id');
-                // Optionally, navigate to Doctor Call.html or another page with the patient ID
-                if (confirm(`Are you sure you want to cancel the request for patient ID: ${patientId}?`)) {
-                    // For demonstration, we'll navigate to Doctor Call.html, but you can change this
-                    window.location.href = `Doctors dashboard.html?id=${patientId}`;
+            button.addEventListener('click', function () {
+                const id = this.getAttribute('data-id');
+                if (confirm('Are you sure you want to cancel this request?')) {
+                    fetch('backend/delete_patient_request.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ id }),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                const row = document.getElementById(`row-${id}`);
+                                if (row) {
+                                    alert('Request deleted successfully.');
+                                    row.remove(); // Only remove if the element exists
+                                    
+                                }
+                            } else {
+                                alert('Failed to delete the request.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('An error occurred.');
+                        });
                 }
             });
         });

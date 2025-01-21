@@ -360,9 +360,9 @@
             <img src="https://i.ibb.co/MDjvdK5/Navbar-logo.png" alt="Navbar-logo">
         </div>
         <div class="nav-links">
-            <a href="myrequests.html">Your Requests</a>
+            <a href="myrequests.html">My Requests</a>
             <a href="#">Contact Us</a>
-            <a href="#">About Us</a>
+            <a href="Calling.html">Join meeting</a>
             <div class="user-icon">&#128100;</div>
         </div>
     </div>
@@ -381,7 +381,7 @@
                         <div class="doctor-specialty">Cardiologist</div>
                     </div>
                 </div>
-                <button class="request-btn" data-doctor-id="1">Request</button>
+                <button class="request-btn" data-doctor-id="1234">Request</button>
             </div>
             <div class="doctor-item">
                 <div class="doctor-info">
@@ -391,7 +391,7 @@
                         <div class="doctor-specialty">Neurologist</div>
                     </div>
                 </div>
-                <button class="request-btn" data-doctor-id="2">Request</button>
+                <button class="request-btn" data-doctor-id="2234">Request</button>
             </div>
             <div class="doctor-item">
                 <div class="doctor-info">
@@ -401,7 +401,7 @@
                         <div class="doctor-specialty">Pediatrician</div>
                     </div>
                 </div>
-                <button class="request-btn" data-doctor-id="3">Request</button>
+                <button class="request-btn" data-doctor-id="3234">Request</button>
             </div>
             <!-- Add more doctors as needed -->
         </div>
@@ -464,9 +464,9 @@
     // Add event listeners to all request buttons
     document.querySelectorAll('.request-btn').forEach(button => {
         button.addEventListener('click', function() {
-            const doctorId = this.getAttribute('data-doctor-id');
+            const doctor_id = this.getAttribute('data-doctor-id');
             // Redirect to the new page with the doctor ID as a query parameter
-            window.location.href = `Consult Form.html?doctorId=${doctorId}`;
+            window.location.href = `Consult Form.html?doctor_id=${doctor_id}`;
         });
     });
 });

@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
 
             // Redirect to appropriate page based on role
             if ($role === 'doctor') {
-                header("Location: ../Doctors dashboard.html"); 
+                header("Location: ../Doctors dashboard.php"); 
             } elseif ($role === 'patient') {
                 header("Location: ../Patients dashboard.html"); 
             } elseif ($role === 'admin') {

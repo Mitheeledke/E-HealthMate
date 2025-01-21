@@ -336,7 +336,7 @@
             <img src="https://i.ibb.co/MDjvdK5/Navbar-logo.png" alt="Navbar-logo">
         </div>
         <div class="nav-links">
-            <a href="#">Home</a>
+            <a href="Home Page.html">Home</a>
             <a href="#">Contact Us</a>
             <a href="#">About Us</a>
             <a href="#">Profile</a>
@@ -347,12 +347,28 @@
     <div class="main-container">
         <div class="video-container">
             <div class="video-box">
-                <video id="localVideo" autoplay playsinline></video>
-                <video id="remoteVideo" autoplay playsinline></video>
+                <div id="join-screen">
+                    <!-- Create new Meeting Button -->
+                    <button id="createMeetingBtn">New Meeting</button>
+                    OR
+                    <!-- Join existing Meeting -->
+                    <input type="text" id="meetingIdTxt" placeholder="Enter Meeting id" />
+                    <button id="joinBtn">Join Meeting</button>
+                  </div>
+                  <div id="textDiv"></div>
+                    <div id="grid-screen" style="display: none">
+                    <!-- To Display MeetingId -->
+                    <h3 id="meetingIdHeading"></h3>
+
+                    <!-- Controllers -->
+                    <button id="leaveBtn">Leave</button>
+                    <button id="toggleMicBtn">Toggle Mic</button>
+                    <button id="toggleWebCamBtn">Toggle WebCam</button>
+
+                    <!-- render Video -->
+                    <div class="row" id="videoContainer"></div>
+                    </div>
             </div>
-            <button id="startCall">Start Call</button>
-            <button id="endCall">End Call</button>
-        </div>
         <div class="chat-container">
             <div class="chat-box" id="chatBox">
                 <!-- Chat messages will appear here -->
@@ -412,78 +428,9 @@
             <p>Terms of Service | Privacy Policy | Cookie Policy</p>
         </div>
     </footer>
+    <script src="https://sdk.videosdk.live/js-sdk/0.0.86/videosdk.js"></script>
+    <script src="config.js"></script>
+    <script src="calling.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const localVideo = document.getElementById('localVideo');
-            const remoteVideo = document.getElementById('remoteVideo');
-            const startCallButton = document.getElementById('startCall');
-            const endCallButton = document.getElementById('endCall');
-            const chatInput = document.getElementById('chatInput');
-            const chatBox = document.getElementById('chatBox');
-            const sendButton = document.getElementById('sendButton');
-
-            let localStream;
-            let peerConnection;
-
-            const constraints = {
-                video: true,
-                audio: true
-            };
-
-            startCallButton.addEventListener('click', async () => {
-                try {
-                    localStream = await navigator.mediaDevices.getUserMedia(constraints);
-                    localVideo.srcObject = localStream;
-
-                    // Initialize WebRTC peer connection here
-                    // This is a simplified example; you need to handle signaling and ICE candidates
-                    peerConnection = new RTCPeerConnection();
-
-                    localStream.getTracks().forEach(track => {
-                        peerConnection.addTrack(track, localStream);
-                    });
-
-                    peerConnection.ontrack = event => {
-                        remoteVideo.srcObject = event.streams[0];
-                    };
-
-                    // Create offer and set local description
-                    const offer = await peerConnection.createOffer();
-                    await peerConnection.setLocalDescription(offer);
-
-                    // Here you would send the offer to the remote peer via signaling server
-                    console.log('Offer:', offer);
-                } catch (error) {
-                    console.error('Error accessing media devices.', error);
-                }
-            });
-
-            endCallButton.addEventListener('click', () => {
-                if (localStream) {
-                    localStream.getTracks().forEach(track => track.stop());
-                    localVideo.srcObject = null;
-                }
-                if (peerConnection) {
-                    peerConnection.close();
-                }
-            });
-
-            sendButton.addEventListener('click', () => {
-                const message = chatInput.value.trim();
-                if (message) {
-                    const messageElement = document.createElement('p');
-                    messageElement.classList.add('message', 'user');
-                    messageElement.textContent = message;
-                    chatBox.appendChild(messageElement);
-                    chatInput.value = '';
-                    chatBox.scrollTop = chatBox.scrollHeight;
-
-                    // Here you would send the message to the remote peer via signaling server
-                    console.log('Message sent:', message);
-                }
-            });
-        });
-    </script>
 </body>
 </html>

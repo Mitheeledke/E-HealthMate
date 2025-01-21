@@ -1,0 +1,3 @@
+// Auth token will be used to generate a meeting and connect to it
+TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlrZXkiOiI4ZTA1MTZkMi1jYjY4LTQ2YzctYTZkYy1hNTYwNzdhNjcxMjEiLCJwZXJtaXNzaW9ucyI6WyJhbGxvd19qb2luIl0sImlhdCI6MTczNzQ4MTI4NCwiZXhwIjoxNzQwMDczMjg0fQ.HC5dgkt7ppRnqApzhavU1GareSvw1L3bTfGwb3kaKos";
+APIKEY = "82863d23-19e2-4161-8a3c-7db37196ff1e"
