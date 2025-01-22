@@ -441,7 +441,7 @@
                     <p>Download Our App</p>
                     <div class="store-buttons">
                         <a href="#"><img src="app-store.png" alt="App Store"></a>
-                        <a href="#"><img src="play-store.png" alt="Play Store"></a>
+                        <a href="#"><img src="play-store.svg" alt="Play Store"></a>
                     </div>
                 </div>
             </div>
