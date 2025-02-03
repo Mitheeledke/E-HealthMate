@@ -6,6 +6,10 @@ Virtual consultations save time and reduce the need for travel.
 <h4>Cost-Effective</h4>
 Reduces hospital readmissions and in-person visits.
 <h4>Timely Medical Support</h4>
-Allows for faster diagnosis and real-time support.</p>
+Allows for faster diagnosis and real-time support.
+<h4>Live Vedio Conference</h4>
+Providing an live Vedio chat with specified available Doctors
+<h4>Admin Management</h4>
+Allows the control over all the network</p>
 
 
